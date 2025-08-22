@@ -17,7 +17,12 @@ cd final-playwright-project
 ```bash
 npm install
 ```
-### 3. Run a test
+
+### 3. Add credentials
+
+Add your EMAIL, PASSWORD and USER_NAME to the .env.example file.
+
+### 4. Run a test
 
 Use the following command to run all tests:
 

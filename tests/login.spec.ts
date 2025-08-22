@@ -1,12 +1,14 @@
 import { test, expect } from '@playwright/test';
+import { LoginPage } from '../pages/LoginPage';
+import { AccountPage } from '../pages/AccountPage';
 
 test('Successful login and account page verification', async ({ page }) => {
-  await page.goto('/auth/login');
-    await page.getByTestId('email').fill('customer@practicesoftwaretesting.com');
-    await page.getByTestId('password').fill('welcome01');
-    await page.getByRole('button', {name: 'Login'}).click();
+    const loginPage = new LoginPage(page);
+    await page.goto('/auth/login');
+    await loginPage.login(process.env.EMAIL!, process.env.PASSWORD!);
+    const account = new AccountPage(page); 
     await expect(page).toHaveURL(/\/account$/);
-    await expect(page.getByTestId('page-title')).toHaveText('My account');
-    await expect( page.getByTestId('nav-menu')).toHaveText('Jane Doe');
+    await expect(account.title).toHaveText('My account');
+    await expect(account.header.navMenu).toHaveText(process.env.USER_NAME!);
 });
  
