@@ -6,6 +6,8 @@ test.describe('Product Page', () => {
     let homePage: HomePage;
     let productPage: ProductPage;
 
+    const productName = 'Combination Pliers';
+
     test.beforeEach(async ({ page }) => {
         homePage = new HomePage(page);
         productPage = new ProductPage(page);
@@ -13,10 +15,10 @@ test.describe('Product Page', () => {
     });
 
     test('Verify user can view product details', async ({ page }) => {
-        await homePage.clickCombinationPliers();
+        await homePage.clickOnCard(productName);
 
         await expect(page).toHaveURL(/.*\/product\/.*/);
-        await expect(productPage.productName).toHaveText('Combination Pliers');
+        await expect(productPage.productName).toHaveText(productName);
         await expect(productPage.productPrice).toHaveText('14.15');
         await expect(productPage.addToCartButton).toBeVisible();
         await expect(productPage.addToFavoritesButton).toBeVisible();

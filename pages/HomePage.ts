@@ -19,11 +19,12 @@ export class HomePage {
 
     async goto() {
         await this.page.goto('https://practicesoftwaretesting.com');
-        await this.page.waitForTimeout(1000);
+        await this.page.waitForLoadState();
     }
 
-    async clickCombinationPliers() {
-        const productLink = this.page.getByRole('heading', { name: /Combination Pliers/i });
+    async clickOnCard(productName: string) {
+        const productLink = this.page.getByRole('heading', { name: productName });
+        await productLink.waitFor({ state: 'visible' });
         await productLink.click();
     }
 

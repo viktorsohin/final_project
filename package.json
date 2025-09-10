@@ -4,14 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test",
-    "test1": "npx playwright test tests/addProductToCart.spec.ts",
-    "test2": "npx playwright test tests/login.spec.ts",
-    "test3": "npx playwright test tests/productPage.spec.ts",
-    "test4": "npx playwright test tests/sortingByCategories.spec.ts",
-    "test5": "npx playwright test tests/sortingByName.spec.ts",
-    "test6": "npx playwright test tests/sortingByPrice.spec.ts",
-    "test7": "npx playwright test --project=auth"
+    "test": "npx playwright test"
   },
   "repository": {
     "type": "git",
